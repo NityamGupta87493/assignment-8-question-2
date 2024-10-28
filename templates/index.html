@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background"></div>
+
+    <div class="container">
+        <h1>📧 Spam Detection System</h1>
+        <p>Enter your email content below to find out if it's spam or not:</p>
+
+        <form method="POST" action="/">
+            <textarea 
+                name="email_text" 
+                rows="8" 
+                placeholder="Type your email content here...">{{ email_text }}</textarea>
+            <button type="submit">Detect Spam</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <p>Result: <span class="{{ 'spam' if result == '🚫 Spam' else 'not-spam' }}">{{ result }}</span></p>
+        </div>
+        {% endif %}
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Spam Detection System | Built with ❤️ using Flask</p>
+    </footer>
+</body>
+</html>
